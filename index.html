@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage API</title>
+</head>
+
+<body>
+  <button onclick="createUser()">Create User</button>
+  <button onclick="getUsers()">Create User</button>
+  <button onclick="updateUser()">Create User</button>
+  <button onclick="deleteUser()">Create User</button>
+  <script>
+    const createUser = () => {
+      const user = JSON.parse(localStorage.setItem('user') || []);
+    }
+  </script>
+</body>
+
+</html>
