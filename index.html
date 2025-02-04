@@ -37,9 +37,9 @@
     const updateUser = () => {
       let users = JSON.parse(localStorage.getItem("users")) || [];
       if (users.length > 0) {
-          users[0].name = "Updated user";
-          localStorage.setItem("users", JSON.stringify(users));
-          console.log("First user updated: ", users[0]);
+        users[0].name = "Updated user";
+        localStorage.setItem("users", JSON.stringify(users));
+        console.log("First user updated: ", users[0]);
       } else {
         console.log("No users to update.")
       }
@@ -47,8 +47,14 @@
 
     const deleteUser = () => {
       let users = JSON.parse(localStorage.getItem('users')) || [];
-      users.pop(1);
-      console.log(users)
+      // users.splice(0, 1);  // Removes the first two elements
+      let pop = users.pop();
+
+      console.log("Removed Element: ", pop);
+
+      console.log("Updated Array: ", users);
+      localStorage.setItem('users', JSON.stringify(users));
+      // console.log(users);
     }
   </script>
 </body>
