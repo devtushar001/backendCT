@@ -6,12 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>localStorage API</title>
 </head>
+<style>
+  body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
 
 <body>
   <button onclick="createUser()">Create User</button>
-  <button onclick="getUsers()">Create User</button>
-  <button onclick="updateUser()">Create User</button>
-  <button onclick="deleteUser()">Create User</button>
+  <button onclick="getUsers()">Get User</button>
+  <button onclick="updateUser()">Update User</button>
+  <button onclick="deleteUser()">Delete User</button>
   <script>
     const createUser = () => {
       const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -24,6 +32,23 @@
     const getUsers = () => {
       let users = JSON.parse(localStorage.getItem('users')) || [];
       console.log('All Users:', users)
+    }
+
+    const updateUser = () => {
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+      if (users.length > 0) {
+          users[0].name = "Updated user";
+          localStorage.setItem("users", JSON.stringify(users));
+          console.log("First user updated: ", users[0]);
+      } else {
+        console.log("No users to update.")
+      }
+    }
+
+    const deleteUser = () => {
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      users.pop(1);
+      console.log(users)
     }
   </script>
 </body>
