@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crud Operation</title>
+
+</head>
+
+
+<body>
+
+  <button onclick="createUser()">Add User</button>
+  <button onclick="deleteUser()">Delete</button>
+  <button onclick="getUser()">Get All User</button>
+  <div id="container">
+
+  </div>
+  <br>
+  <br>
+  <div class="user-update">
+    <input placeholder="Enter user id" id="update-user" type="">
+    <button onclick="updateUser()">Update</button>
+  </div>
+  <script>
+    function createUser() {
+      const users = (JSON.parse(localStorage.getItem('users')) || []);
+      const newUser = { id: users.length + 1, name: `User ${users.length}` };
+      users.push(newUser);
+      localStorage.setItem('users', JSON.stringify(users));
+      console.log(JSON.parse(localStorage.getItem('users')))
+      getUser();
+    }
+
+    function getUser() {
+      const frontend = document.getElementById('container');
+      console.log(frontend)
+      const allusers = (JSON.parse(localStorage.getItem('users')) || []);
+
+
+      let html = ''
+      allusers.map((item, i) => {
+        html += `
+          <p>${item.id} </p>
+          <p>${item.name} </p>
+       `
+      })
+      console.log(html)
+      frontend.innerHTML = html;
+
+    }
+
+    function deleteUser() {
+      const users = (JSON.parse(localStorage.getItem('users')) || []);
+      const deletedUser = users.pop(0);
+      localStorage.setItem('users', JSON.stringify(users));
+      console.log(JSON.parse(localStorage.getItem('users')))
+      getUser();
+    }
+
+    function updateUser() {
+      const id = document.getElementById('update-user').value;
+
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    }
+  </script>
+</body>
+
+</html>
