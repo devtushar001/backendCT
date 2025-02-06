@@ -1,7 +1,6 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  console.log(req.url)
   if (req.url === '/') {
     res.end("This is home page")
   }
@@ -12,6 +11,10 @@ const server = http.createServer((req, res) => {
   
   if (req.url === '/profile') {
     res.end("This is profile page")
+  }
+
+  if(req.url === '/') {
+    res.end('You got nothing!!')
   }
   
 });
